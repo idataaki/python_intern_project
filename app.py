@@ -1,6 +1,7 @@
 import agency
 
-p = agency.plane(20, 100)
+p = agency.Plane(20, 100)
+agncy = agency.Agency(p)
 
 while 1:
     print("\n\t\t|-----------------------|",
@@ -21,7 +22,7 @@ while 1:
         if name == '5': continue
         n_c = int(input("enter the number of seats you want to book:"))
         if n_c == 5: continue
-        id = p.buy(name, n_c)
+        id = agncy.buy(name, n_c)
         if id == -1:
             print(f"not enough chairs. there is {p.chairs.count(False)} free seats remained")
         else:
@@ -31,7 +32,7 @@ while 1:
         print("5- back to main menu")
         id = int(input("Enter your Ticket number you want it's info:"))
         if id == 5: continue
-        ticket = p.info(id)
+        ticket = agncy.get_info(id)
         if ticket != None:
             print(f"ticke number: {ticket.id}", f"number of seats for the ticket: {ticket.no}",
                   f"chairs number: {ticket.chair}", sep="\n")
@@ -42,7 +43,7 @@ while 1:
         print("5- back to main menu")
         id = int(input("enter the Ticket number you want to refund:"))
         if id == 5: continue
-        if p.refund(id):
+        if agncy.refund(id):
             print("refunded successfuly")
         else:
             print("Failed! please check you ticket number")
